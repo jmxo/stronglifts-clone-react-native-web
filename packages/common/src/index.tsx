@@ -22,5 +22,6 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     width: 425,
+    flex: 1,
   },
 });
