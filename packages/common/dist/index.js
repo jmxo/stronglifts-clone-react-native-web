@@ -17,10 +17,10 @@ var styles = react_native_1.StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
     },
     wrapper: {
         width: 425,
         flex: 1,
+        backgroundColor: '#F5FCFF',
     },
 });
