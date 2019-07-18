@@ -69,7 +69,9 @@ export const WorkoutCard: React.FC<Props> = observer(
                   style={[styles.circle, styles.fadedBackground]}
                   key={set + index}
                 >
-                  <Text style={[styles.circleText, styles.grayText]}>X</Text>
+                  <Text style={[styles.circleText, styles.grayText]}>
+                    &times;
+                  </Text>
                 </View>
               );
             }
