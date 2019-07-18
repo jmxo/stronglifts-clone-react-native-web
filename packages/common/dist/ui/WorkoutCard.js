@@ -62,7 +62,7 @@ exports.WorkoutCard = mobx_react_lite_1.observer(function (_a) {
         React.createElement(react_native_1.View, { style: styles.bottomRow }, sets.map(function (set, index) {
             if (set === "x") {
                 return (React.createElement(react_native_1.View, { style: [styles.circle, styles.fadedBackground], key: set + index },
-                    React.createElement(react_native_1.Text, { style: [styles.circleText, styles.grayText] }, "X")));
+                    React.createElement(react_native_1.Text, { style: [styles.circleText, styles.grayText] }, "\u00D7")));
             }
             if (set === "") {
                 return (React.createElement(react_native_1.TouchableOpacity, { onPress: function () { return onSetPress(index); }, style: [styles.circle, styles.fadedBackground], key: set + index }));
