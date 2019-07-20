@@ -11,6 +11,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var dayjs_1 = __importDefault(require("dayjs"));
 var mobx_1 = require("mobx");
+var mobx_persist_1 = require("mobx-persist");
 var padZero = function (n) {
     if (n >= 10) {
         return n;
@@ -57,13 +58,13 @@ var WorkoutTimerStore = /** @class */ (function () {
         configurable: true
     });
     __decorate([
-        mobx_1.observable
+        mobx_persist_1.persist("object"), mobx_1.observable
     ], WorkoutTimerStore.prototype, "startTime", void 0);
     __decorate([
-        mobx_1.observable
+        mobx_persist_1.persist, mobx_1.observable
     ], WorkoutTimerStore.prototype, "isRunning", void 0);
     __decorate([
-        mobx_1.observable
+        mobx_persist_1.persist, mobx_1.observable
     ], WorkoutTimerStore.prototype, "seconds", void 0);
     __decorate([
         mobx_1.action

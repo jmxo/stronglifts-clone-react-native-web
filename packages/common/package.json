@@ -13,6 +13,7 @@
   "dependencies": {
     "dayjs": "^1.8.15",
     "mobx": "5.9.0",
+    "mobx-persist": "0.4.1",
     "mobx-react-lite": "1.0.1",
     "react": "16.8.6",
     "react-native": "0.60.3",

@@ -1,5 +1,5 @@
-import { RootStore } from './RootStore';
-declare type WorkoutDay = 'a' | 'b';
+import { RootStore } from "./RootStore";
+declare type WorkoutDay = "a" | "b";
 interface WorkoutHistory {
     [key: string]: Array<{
         exercise: string;
