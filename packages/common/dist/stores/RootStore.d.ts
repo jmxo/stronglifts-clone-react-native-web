@@ -4,5 +4,6 @@ import { WorkoutTimerStore } from "./WorkoutTimerStore";
 export declare class RootStore {
     workoutStore: WorkoutStore;
     workoutTimerStore: WorkoutTimerStore;
+    constructor();
 }
 export declare const RootStoreContext: import("react").Context<RootStore>;
