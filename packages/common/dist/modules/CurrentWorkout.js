@@ -28,7 +28,7 @@ var styles = react_native_1.StyleSheet.create({
     },
 });
 exports.CurrentWorkout = mobx_react_lite_1.observer(function (_a) {
-    var history = _a.history;
+    var history = _a.history, _b = _a.match.params, day = _b.day, month = _b.month, year = _b.year;
     var rootStore = React.useContext(RootStore_1.RootStoreContext);
     // stop timer on unmount
     React.useEffect(function () {
@@ -36,9 +36,13 @@ exports.CurrentWorkout = mobx_react_lite_1.observer(function (_a) {
             rootStore.workoutTimerStore.stopTimer();
         };
     }, []);
+    var isCurrentWorkout = !year && !month && !day;
+    var dateKey = year + "-" + month + "-" + day;
     return (React.createElement(react_native_1.View, { style: styles.container },
         React.createElement(react_native_1.ScrollView, { keyboardShouldPersistTaps: "always", contentContainerStyle: styles.scrollContainer },
-            rootStore.workoutStore.currentExercises.map(function (e) { return (React.createElement(WorkoutCard_1.WorkoutCard, { key: e.exercise, exercise: e.exercise, repsAndWeight: e.numSets + "x" + e.reps + " " + e.weight, sets: e.sets, onSetPress: function (setIndex) {
+            (isCurrentWorkout
+                ? rootStore.workoutStore.currentExercises
+                : rootStore.workoutStore.history[dateKey]).map(function (e) { return (React.createElement(WorkoutCard_1.WorkoutCard, { key: e.exercise, exercise: e.exercise, repsAndWeight: e.numSets + "x" + e.reps + " " + e.weight, sets: e.sets, onSetPress: function (setIndex) {
                     // start timer
                     rootStore.workoutTimerStore.startTimer();
                     // decrement reps
@@ -57,9 +61,11 @@ exports.CurrentWorkout = mobx_react_lite_1.observer(function (_a) {
                     e.sets[setIndex] = newValue;
                 } })); }),
             React.createElement(react_native_1.Button, { title: "SAVE", onPress: function () {
-                    rootStore.workoutStore.history[dayjs_1.default().format("YYYY-MM-DD")] =
-                        rootStore.workoutStore.currentExercises;
-                    rootStore.workoutStore.currentExercises = [];
+                    if (isCurrentWorkout) {
+                        rootStore.workoutStore.history[dayjs_1.default().format("YYYY-MM-DD")] =
+                            rootStore.workoutStore.currentExercises;
+                        rootStore.workoutStore.currentExercises = [];
+                    } // else, it will be mutated automatically
                     history.push("/");
                 } })),
         rootStore.workoutTimerStore.isRunning ? (React.createElement(WorkoutTimer_1.WorkoutTimer, { percent: rootStore.workoutTimerStore.percent, currentTime: rootStore.workoutTimerStore.display, onXPress: function () { return rootStore.workoutTimerStore.stopTimer(); } })) : null));

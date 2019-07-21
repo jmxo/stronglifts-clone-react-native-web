@@ -21,6 +21,9 @@ var styles = react_native_1.StyleSheet.create({
     },
 });
 exports.Card = function (_a) {
-    var children = _a.children;
+    var children = _a.children, onPress = _a.onPress;
+    if (onPress) {
+        return (React.createElement(react_native_1.TouchableOpacity, { style: styles.card, onPress: onPress }, children));
+    }
     return React.createElement(react_native_1.View, { style: styles.card }, children);
 };

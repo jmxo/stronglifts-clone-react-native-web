@@ -69,7 +69,10 @@ exports.WorkoutHistory = mobx_react_lite_1.observer(function (_a) {
                     item.map(function (_a) {
                         var date = _a.date, exercises = _a.exercises;
                         return (React.createElement(react_native_1.View, { key: date, style: styles.cardContainer },
-                            React.createElement(HistoryCard_1.HistoryCard, { header: date, currentExercises: exercises })));
+                            React.createElement(HistoryCard_1.HistoryCard, { header: date, currentExercises: exercises, onPress: function () {
+                                    var parts = date.split("-");
+                                    history.push("/workout/" + parts[0] + "/" + parts[1] + "/" + parts[2]);
+                                } })));
                     }),
                     item.length < 3 ? React.createElement(react_native_1.View, { style: styles.cardContainer }) : null,
                     item.length < 2 ? React.createElement(react_native_1.View, { style: styles.cardContainer }) : null));
