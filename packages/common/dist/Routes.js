@@ -22,5 +22,6 @@ exports.Routes = function () {
     return (react_1.default.createElement(index_1.Router, null,
         react_1.default.createElement(index_1.Switch, null,
             react_1.default.createElement(index_1.Route, { exact: true, path: "/", render: function (props) { return react_1.default.createElement(WorkoutHistory_1.WorkoutHistory, __assign({}, props)); } }),
-            react_1.default.createElement(index_1.Route, { path: "/current-workout", render: function (props) { return react_1.default.createElement(CurrentWorkout_1.CurrentWorkout, __assign({}, props)); } }))));
+            react_1.default.createElement(index_1.Route, { path: "/current-workout", render: function (props) { return react_1.default.createElement(CurrentWorkout_1.CurrentWorkout, __assign({}, props)); } }),
+            react_1.default.createElement(index_1.Route, { path: "/workout/:year/:month/:day", render: function (props) { return react_1.default.createElement(CurrentWorkout_1.CurrentWorkout, __assign({}, props)); } }))));
 };

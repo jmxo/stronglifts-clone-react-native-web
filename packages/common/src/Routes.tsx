@@ -12,6 +12,10 @@ export const Routes = () => {
           path="/current-workout"
           render={props => <CurrentWorkout {...props} />}
         />
+        <Route
+          path="/workout/:year/:month/:day"
+          render={props => <CurrentWorkout {...props} />}
+        />
       </Switch>
     </Router>
   );

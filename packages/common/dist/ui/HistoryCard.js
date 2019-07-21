@@ -18,8 +18,8 @@ var exerciseShortName = {
     "Barbell Row": "ROW",
 };
 exports.HistoryCard = function (_a) {
-    var header = _a.header, currentExercises = _a.currentExercises;
-    return (React.createElement(Card_1.Card, null,
+    var header = _a.header, currentExercises = _a.currentExercises, onPress = _a.onPress;
+    return (React.createElement(Card_1.Card, { onPress: onPress },
         React.createElement(react_native_1.Text, null, header),
         currentExercises.map(function (ce) { return (React.createElement(react_native_1.Text, { key: ce.exercise }, exerciseShortName[ce.exercise] + " " + ce.numSets + "x" + ce.reps + " " + ce.weight)); })));
 };
