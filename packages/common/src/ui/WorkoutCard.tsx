@@ -1,6 +1,7 @@
 import {observer} from "mobx-react-lite";
 import * as React from "react";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {Card} from "./Card";
 
 interface Props {
   exercise: string;
@@ -10,14 +11,7 @@ interface Props {
 }
 
 const styles = StyleSheet.create({
-  card: {
-    borderRadius: 3,
-    backgroundColor: "#FFF",
-    shadowColor: "#000",
-    shadowOffset: {width: 2, height: 2},
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    padding: 10,
+  cardContainer: {
     marginBottom: 10,
   },
   topRow: {
@@ -56,47 +50,51 @@ const styles = StyleSheet.create({
 export const WorkoutCard: React.FC<Props> = observer(
   ({exercise, repsAndWeight, sets, onSetPress}) => {
     return (
-      <View style={styles.card}>
-        <View style={styles.topRow}>
-          <Text style={styles.topRowText}>{exercise}</Text>
-          <Text style={styles.topRowText}>{repsAndWeight}</Text>
-        </View>
-        <View style={styles.bottomRow}>
-          {sets.map((set, index) => {
-            if (set === "x") {
-              return (
-                <View
-                  style={[styles.circle, styles.fadedBackground]}
-                  key={set + index}
-                >
-                  <Text style={[styles.circleText, styles.grayText]}>
-                    &times;
-                  </Text>
-                </View>
-              );
-            }
+      <View style={styles.cardContainer}>
+        <Card>
+          <View style={styles.topRow}>
+            <Text style={styles.topRowText}>{exercise}</Text>
+            <Text style={styles.topRowText}>{repsAndWeight}</Text>
+          </View>
+          <View style={styles.bottomRow}>
+            {sets.map((set, index) => {
+              if (set === "x") {
+                return (
+                  <View
+                    style={[styles.circle, styles.fadedBackground]}
+                    key={set + index}
+                  >
+                    <Text style={[styles.circleText, styles.grayText]}>
+                      &times;
+                    </Text>
+                  </View>
+                );
+              }
 
-            if (set === "") {
+              if (set === "") {
+                return (
+                  <TouchableOpacity
+                    onPress={() => onSetPress(index)}
+                    style={[styles.circle, styles.fadedBackground]}
+                    key={set + index}
+                  />
+                );
+              }
+
               return (
                 <TouchableOpacity
                   onPress={() => onSetPress(index)}
-                  style={[styles.circle, styles.fadedBackground]}
+                  style={styles.circle}
                   key={set + index}
-                />
+                >
+                  <Text style={[styles.circleText, styles.whiteText]}>
+                    {set}
+                  </Text>
+                </TouchableOpacity>
               );
-            }
-
-            return (
-              <TouchableOpacity
-                onPress={() => onSetPress(index)}
-                style={styles.circle}
-                key={set + index}
-              >
-                <Text style={[styles.circleText, styles.whiteText]}>{set}</Text>
-              </TouchableOpacity>
-            );
-          })}
-        </View>
+            })}
+          </View>
+        </Card>
       </View>
     );
   },

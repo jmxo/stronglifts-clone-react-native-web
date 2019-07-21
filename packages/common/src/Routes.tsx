@@ -8,7 +8,10 @@ export const Routes = () => {
     <Router>
       <Switch>
         <Route exact path="/" render={props => <WorkoutHistory {...props} />} />
-        <Route path="/current-workout" render={() => <CurrentWorkout />} />
+        <Route
+          path="/current-workout"
+          render={props => <CurrentWorkout {...props} />}
+        />
       </Switch>
     </Router>
   );

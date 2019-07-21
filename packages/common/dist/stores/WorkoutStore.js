@@ -11,6 +11,7 @@ var mobx_persist_1 = require("mobx-persist");
 var WorkoutStore = /** @class */ (function () {
     function WorkoutStore(rootStore) {
         this.currentExercises = [];
+        this.history = {};
         this.rootStore = rootStore;
     }
     __decorate([
@@ -35,7 +36,7 @@ var WorkoutStore = /** @class */ (function () {
         mobx_persist_1.persist("list"), mobx_1.observable
     ], WorkoutStore.prototype, "currentExercises", void 0);
     __decorate([
-        mobx_persist_1.persist("list"), mobx_1.observable
+        mobx_persist_1.persist("object"), mobx_1.observable
     ], WorkoutStore.prototype, "history", void 0);
     return WorkoutStore;
 }());
